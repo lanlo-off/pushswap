@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/05/30 16:02:57 by llechert         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:35:54 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	valid_arg(int nb_args, char **av, int *tab)
 	i = 0;
 	while (i < nb_args)
 	{
-		nb = ft_atol(av[i + 1]);//atol ne recup que le premier nb detecte
+		nb = ft_atol(av[i + 1]);//atol strict ne fonctionne pas s'il y a d'autres caracteres apres le nombre
 		if (nb < INT_MIN || nb > INT_MAX)
 			return (0);
 		j = 0;
