@@ -1,6 +1,8 @@
 {
 	"makefile.configureOnOpen": false,
 	"files.associations": {
-		"libft.h": "c"
-	}
+		"libft.h": "c",
+		"ft_printf.h": "c"
+	},
+	"files.autoSave": "afterDelay"
 }

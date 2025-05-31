@@ -1,5 +1,5 @@
 SRCS = src/push_swap.c\
-	src/valid_arg.c
+	src/check_arg.c
 
 OBJS := $(SRCS:.c=.o)
 
@@ -7,7 +7,7 @@ NAME = push_swap
 
 HEADER = src/push_swap.h
 
-CC = cc
+CC = cc -g
 
 AR = ar rcs
 

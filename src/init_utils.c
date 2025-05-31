@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_arg.c                                        :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/05/31 11:06:57 by llechert         ###   ########.fr       */
+/*   Created: 2025/05/31 15:43:22 by llechert          #+#    #+#             */
+/*   Updated: 2025/05/31 15:44:49 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_arg(int nb_args, char **av, int *tab)
+int	check_duplicates(t_stack **stack_a, long nb)
 {
-	int		i;
-	int		j;
-	long	nb;
+	t_stack	*tmp;
 
-	i = 0;
-	while (i < nb_args)
+	if (!stack_a)
+		return (1);
+	tmp = *stack_a;
+	while (tmp)
 	{
-		nb = ft_atol(av[i + 1]);//atol strict ne fonctionne pas s'il y a d'autres caracteres apres le nombre
-		if (nb < INT_MIN || nb > INT_MAX)
+		if (tmp->value == nb)
 			return (0);
-		j = 0;
-		while (j < i)//check les doublons
-		{
-			if (tab[j] == (int)nb)
-				return (0);
-			j++;
-		}
-		tab[i] = (int)nb;
-		i++;
+		tmp = tmp->next;
 	}
-	return(1);
+	return (1);
 }
 
 long	ft_atol(char *str)
