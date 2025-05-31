@@ -1,16 +1,11 @@
-SRCS_A = push_swap.c\
-	valid_arg.c\
-	
+SRCS = src/push_swap.c\
+	src/valid_arg.c
 
-SRC_DIR	= .
+OBJS := $(SRCS:.c=.o)
 
-OBJS_A = $(SRCS_A:.c=.o)
+NAME = push_swap
 
-INC_DIR	= .
-
-NAME = libpushswap.a
-
-HEADER = ft_pushswap.h
+HEADER = src/push_swap.h
 
 CC = cc
 
@@ -20,16 +15,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS_A) 
-	$(AR) $(NAME) $(OBJS_A)
+$(NAME): libs $(OBJS) 
+	$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -L./ftprintf -lftprintf -o $(NAME)
 
 %.o: %.c $(HEADER)
-	$(CC) -I. $(CFLAGS) -c $< -o $@
+	$(CC) -I./libft -I./ftprintf $(CFLAGS) -c $< -o $@
+
+libs:
+	make -C libft
+	make -C ftprintf
 
 clean:
-	rm -f $(OBJS_A) $(OBJS_B)
+	@make clean -C libft
+	@make clean -C ftprintf
+	rm -f $(OBJS)
 
 fclean: clean
+	@make fclean -C libft
+	@make fclean -C ftprintf
 	rm -f $(NAME)
 
 re: fclean all

@@ -6,12 +6,11 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/05/30 16:35:54 by llechert         ###   ########.fr       */
+/*   Updated: 2025/05/31 11:06:57 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft_git/libft.h"
 
 int	valid_arg(int nb_args, char **av, int *tab)
 {
