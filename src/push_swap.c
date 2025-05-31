@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:57:06 by llechert          #+#    #+#             */
-/*   Updated: 2025/05/31 15:40:22 by llechert         ###   ########.fr       */
+/*   Updated: 2025/05/31 17:47:21 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int	main(int ac, char **av)
 {
 	t_stack	**stack_a;
-	t_stack	*tmp = NULL;//a supprimer apres test
 
 	if (ac < 2)
-		return (1);
+		return (0);
 	stack_a = malloc(sizeof(t_stack *));
 	if (!stack_a)
 		return (1);
@@ -29,26 +28,52 @@ int	main(int ac, char **av)
 		ft_printf("Error\n");
 		return (1);
 	}
-	tmp = *stack_a;
-	while (tmp)//a supprimer apres test
-	{
-		ft_printf("%d\n", tmp->value);
-		tmp = tmp->next;
-	}
-	// ft_pushswap(stack_a);
+	ft_test_init(stack_a);//a supprimer avec la fonction en dessous
+	ft_pushswap(stack_a, ac - 1);
 	free_list(stack_a);
 	return (0);
 }
 
-void	free_list(t_stack **stack)
+void	ft_pushswap(t_stack **stack_a, int stack_size)
+{
+	if (stack_size == 1)
+		return ;
+	else if (stack_size == 2 && !is_sorted(stack_a))
+		do_sa(stack_a);
+	// else if (stack_size == 3 && !is_sorted(stack_a))
+	// 	tiny_sort(stack_a);
+	// else if (stack_size > 3 && !is_sorted(stack_a))
+	// 	sort(stack_a);
+}
+
+int	is_sorted(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		previous;
+	
+	if (!*stack)
+		return (1);
+	tmp = *stack;
+	previous = tmp->value;
+	while (tmp)
+	{
+		if (tmp->value < previous)
+			return (0);
+		previous = tmp->value;
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+void	ft_test_init(t_stack **stack)//a balancer apres tests
 {
 	t_stack	*tmp;
 
-	while (*stack)
+	tmp = *stack;
+	while (tmp)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		ft_printf("valeur : %d || ", tmp->value);
+		ft_printf("index : %d\n", tmp->index);
+		tmp = tmp->next;
 	}
-	free(stack);
 }

@@ -1,5 +1,6 @@
 a.out
 push_swap.h.gch
-ex_test.c
 ftprintf
 libft
+test_atoi.c
+test_index

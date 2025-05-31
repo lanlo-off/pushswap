@@ -1,5 +1,12 @@
 SRCS = src/push_swap.c\
-	src/check_arg.c
+	src/init_stack.c\
+	src/init_utils.c\
+	src/ft_free.c\
+	src/swap.c\
+	src/rotate.c\
+	src/push.c\
+	src/rev_rotate.c\
+
 
 OBJS := $(SRCS:.c=.o)
 
