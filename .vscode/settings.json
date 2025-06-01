@@ -6,5 +6,5 @@
 		"push_swap.h": "c"
 	},
 	"files.autoSave": "afterDelay",
-	"editor.renderWhitespace": "all"
+	"editor.renderWhitespace": "all",
 }

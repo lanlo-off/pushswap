@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 18:42:14 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/01 21:42:17 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 /*ft_free.c*/
 void	free_list(t_stack **stack);
 
-/*push_swap.c*/
+/*main.c*/
 void	ft_test_init(t_stack **stack);
 int		is_sorted(t_stack **stack);
 void	ft_pushswap(t_stack **stack_a, int stack_size);
@@ -62,5 +62,10 @@ void	rev_rotate(t_stack **stack);
 void	do_rra(t_stack **stack_a);
 void	do_rrb(t_stack **stack_b);
 void	do_rrr(t_stack **stack_a, t_stack **stack_b);
+
+/*push.c*/
+void	do_pb(t_stack **stack_a, t_stack **stack_b);
+void	do_pa(t_stack **stack_a, t_stack **stack_b);
+void	push(t_stack **stack_from, t_stack **stack_to);
 
 #endif

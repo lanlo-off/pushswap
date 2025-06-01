@@ -1,4 +1,4 @@
-SRCS = src/push_swap.c\
+SRCS = src/main.c\
 	src/init_stack.c\
 	src/manip_lst.c\
 	src/ft_free.c\
@@ -6,7 +6,6 @@ SRCS = src/push_swap.c\
 	src/rotate.c\
 	src/push.c\
 	src/rev_rotate.c\
-
 
 OBJS := $(SRCS:.c=.o)
 
@@ -18,7 +17,16 @@ CC = cc -g
 
 AR = ar rcs
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
+
+TEST_FILES = test_index.c\
+	src/init_stack.c\
+	src/manip_lst.c\
+	src/ft_free.c\
+	src/swap.c\
+	src/rotate.c\
+	src/push.c\
+	src/rev_rotate.c\
 
 all: $(NAME)
 
@@ -43,3 +51,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+test: all
+#	cc -g -Wall -Wextra -Werror test_index.c src/init_stack.c src/manip_lst.c src/swap.c src/rotate.c src/rev_rotate.c -I./src -I./libft -I./ftprintf -L./libft -lft -L./ftprintf -lftprintf -o test_index && ./test_index
+	$(CC) $(CFLAGS) $(TEST_FILES) -I./src -I./libft -I./ftprintf -L./libft -lft -L./ftprintf -lftprintf -o test_index && ./test_index
