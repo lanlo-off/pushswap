@@ -1,7 +1,7 @@
 #include "src/push_swap.h"
 #include <stdio.h>
 
-//commande apres avoir MAKE : cc -g -Wall -Wextra -Werror test_index.c src/init_stack.c src/init_utils.c src/swap.c -I./src -I./libft -I./ftprintf -L./libft -lft -L./ftprintf -lftprintf -o test_index &&./test_index
+//commande apres avoir MAKE : cc -g -Wall -Wextra -Werror test_index.c src/init_stack.c src/manip_lst.c src/swap.c src/rotate.c src/rev_rotate.c -I./src -I./libft -I./ftprintf -L./libft -lft -L./ftprintf -lftprintf -o test_index &&./test_index
 
 void print_list(t_stack *stack)
 {
@@ -62,6 +62,11 @@ int main(void)
     printf("\nListe initiale:");
     print_list(*stack);
 
+    // Test de la fonction indexation
+    printf("\nTest de l'indexation:");
+    indexation(stack, size);
+    print_list(*stack);
+
     // Test de swap_a
     printf("\nTest de sa (swap des 2 premiers éléments):");
     do_sa(stack);
@@ -72,14 +77,14 @@ int main(void)
     do_sa(stack);
     print_list(*stack);
 
-    // Test de la fonction indexation
-    printf("\nTest de l'indexation:");
-    indexation(stack, size);
+    // Test de ra
+    printf("\nTest de ra:");
+    do_ra(stack);
     print_list(*stack);
 
-    // Test de sa après indexation
-    printf("\nTest de sa après indexation:");
-    do_sa(stack);
+    // Test de rra
+    printf("\nTest de rra:");
+    do_rra(stack);
     print_list(*stack);
 
     // Vérification si trié

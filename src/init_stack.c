@@ -3,47 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
+/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/05/31 16:51:47 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/01 18:30:12 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_create_new(long nb)
+int	valid_arg(int stack_size, char **av, t_stack **stack)
 {
-	t_stack	*new;
+	int		i;
+	long	nb;
 
-	new = malloc(sizeof(t_stack));
-	if (!new)
-		return (NULL);//free dans le main ==> A checker
-	new->value = nb;
-	new->index = 0;
-	new->next = NULL;
-	new->prev = NULL;
-	return (new);
-}
-
-int	ft_add_new(long nb, t_stack **stack_a)
-{
-	t_stack	*new;
-	t_stack	*tmp;
-
-	new = ft_create_new(nb);
-	if (!new)
-		return (0);//free dans le main
-	if (!*stack_a)
+	i = 0;
+	while (i < stack_size)
 	{
-		*stack_a = new;
-		return (1);
+		nb = ft_atol(av[i + 1]);//atol strict qui ne fonctionne pas s'il y a d'autres caracteres apres le nombre
+		if (nb < INT_MIN || nb > INT_MAX || !check_duplicates(stack, nb))
+			return (0);//le free se fait depuis le main
+		if (!ft_add_new(nb, stack))
+			return (0);//si pb dans add new, free depuis main
+		i++;
 	}
-	tmp = *stack_a;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;//une fois sur le dernier maillon deja existant, on peut ajouter le new en next
-	new->prev = tmp;//en miroir, l'ancien dernier est le prev du new
+	indexation(stack, stack_size);
 	return (1);
 }
 
@@ -74,21 +58,45 @@ void	indexation(t_stack **stack, int stack_size)
 	}
 }
 
-int	valid_arg(int stack_size, char **av, t_stack **stack)
+int	check_duplicates(t_stack **stack_a, long nb)
 {
-	int		i;
+	t_stack	*tmp;
+
+	if (!stack_a)
+		return (1);
+	tmp = *stack_a;
+	while (tmp)
+	{
+		if (tmp->value == nb)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+long	ft_atol(char *str)
+{
 	long	nb;
+	int		i;
+	int		j;
+	int		sign;
 
 	i = 0;
-	while (i < stack_size)
+	nb = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	j = i;
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nb = ft_atol(av[i + 1]);//atol strict qui ne fonctionne pas s'il y a d'autres caracteres apres le nombre
-		if (nb < INT_MIN || nb > INT_MAX || !check_duplicates(stack, nb))
-			return (0);//le free se fait depuis le main
-		if (!ft_add_new(nb, stack))
-			return (0);//si pb dans add new, free depuis main
+		nb = nb * 10 + str[i] - 48;
 		i++;
 	}
-	indexation(stack, stack_size);
-	return (1);
+	if (j == i || str[i])//si aucun chiffre trouve ou si autre caractere derriere
+		return ((long)INT_MAX + 1);//arg invalide car pas un nombre ==> fera sortir de la boucle dans valid arg
+	return (nb * sign);
 }

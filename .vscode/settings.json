@@ -2,7 +2,9 @@
 	"makefile.configureOnOpen": false,
 	"files.associations": {
 		"libft.h": "c",
-		"ft_printf.h": "c"
+		"ft_printf.h": "c",
+		"push_swap.h": "c"
 	},
-	"files.autoSave": "afterDelay"
+	"files.autoSave": "afterDelay",
+	"editor.renderWhitespace": "all"
 }

@@ -1,6 +1,6 @@
 SRCS = src/push_swap.c\
 	src/init_stack.c\
-	src/init_utils.c\
+	src/manip_lst.c\
 	src/ft_free.c\
 	src/swap.c\
 	src/rotate.c\
