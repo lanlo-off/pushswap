@@ -6,13 +6,13 @@
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 18:30:12 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:35:57 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_arg(int stack_size, char **av, t_stack **stack)
+int	init_stack(int stack_size, char **av, t_stack **stack)
 {
 	int		i;
 	long	nb;

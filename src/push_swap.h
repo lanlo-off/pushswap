@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 21:42:17 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:35:18 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_pushswap(t_stack **stack_a, int stack_size);
 
 /* init_stack.c */
 void	indexation(t_stack **stack, int stack_size);
-int		valid_arg(int stack_size, char **av, t_stack **stack);
+int		init_stack(int stack_size, char **av, t_stack **stack);
 int		check_duplicates(t_stack **stack_a, long nb);
 long	ft_atol(char *str);
 

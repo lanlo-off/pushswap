@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:57:06 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 20:42:08 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/02 10:39:07 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	if (!stack_a)
 		return (1);
 	*stack_a = NULL;
-	if (!valid_arg(ac - 1, av, stack_a))
+	if (!init_stack(ac - 1, av, stack_a))
 	{
 		free_list(stack_a);
 		ft_printf("Error\n");
@@ -40,8 +40,8 @@ void	ft_pushswap(t_stack **stack_a, int stack_size)
 		return ;
 	else if (stack_size == 2 && !is_sorted(stack_a))
 		do_sa(stack_a);
-	// else if (stack_size == 3 && !is_sorted(stack_a))
-	// 	tiny_sort(stack_a);
+	else if (stack_size == 3 && !is_sorted(stack_a))
+		tiny_sort(stack_a);
 	// else if (stack_size > 3 && !is_sorted(stack_a))
 	// 	sort(stack_a);
 }

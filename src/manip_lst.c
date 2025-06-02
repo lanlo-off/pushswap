@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:28:42 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 18:50:42 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/02 11:27:48 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,24 @@ t_stack	*get_last(t_stack *stack)
 	while (stack->next)
 		stack = stack->next;
 	return (stack);
+}
+
+int	get_highest_index_pos(t_stack **stack)
+{
+	int	highest;
+	int	position;
+	int	i;
+
+	highest = INT_MIN;
+	i = 1;
+	while (*stack)
+	{
+		if ((*stack)->value > highest)
+		{
+			highest = (*stack)->value;
+			position = i;
+		}
+		i++;
+	}
+	return (position);
 }
