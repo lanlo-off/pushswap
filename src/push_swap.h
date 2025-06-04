@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 19:09:07 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:20:03 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	choose_rrarb(t_stack **stack_a, t_stack **stack_b, int i);
 void	choose_rrarrb(t_stack **stack_a, t_stack **stack_b, int i);
 
 /*cost_rot.c*/
-int	rot_type(t_stack **stack_a, t_stack **stack_b);
+int		rot_type(t_stack **stack_a, t_stack **stack_b);
 int		cost_rarb(t_stack **stack_a, t_stack **stack_b, int i);
 int		cost_rarrb(t_stack **stack_a, t_stack **stack_b, int i);
 int		cost_rrarb(t_stack **stack_a, t_stack **stack_b, int i);

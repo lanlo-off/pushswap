@@ -61,5 +61,4 @@ fclean: clean
 re: fclean all
 
 test: all
-#	cc -g -Wall -Wextra -Werror test_index.c src/init_stack.c src/manip_lst.c src/swap.c src/rotate.c src/rev_rotate.c -I./src -I./libft -I./ftprintf -L./libft -lft -L./ftprintf -lftprintf -o test_index && ./test_index
 	$(CC) $(CFLAGS) $(TEST_FILES) -I./src -I./libft -I./ftprintf -L./libft -lft -L./ftprintf -lftprintf -o test_index && ./test_index
