@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:57:06 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/02 10:39:07 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:01:10 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
+	//Gerer si ac = 2 ==> ft_split(av[1]) : faudra p'tet adapter init stack pour la taille notamment
 	stack_a = malloc(sizeof(t_stack *));
 	if (!stack_a)
 		return (1);
@@ -29,7 +30,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	ft_test_init(stack_a);//a supprimer avec la fonction en dessous
-	ft_pushswap(stack_a, ac - 1);
+	ft_pushswap(stack_a, ft_stacksize(stack_a));
 	free_list(stack_a);
 	return (0);
 }
@@ -40,10 +41,14 @@ void	ft_pushswap(t_stack **stack_a, int stack_size)
 		return ;
 	else if (stack_size == 2 && !is_sorted(stack_a))
 		do_sa(stack_a);
-	else if (stack_size == 3 && !is_sorted(stack_a))
+	else if (stack_size == 3 && !is_sorted(stack_a))//condition !is_sorted inutile car mon tiny sort gere si c'est deja trie
 		tiny_sort(stack_a);
-	// else if (stack_size > 3 && !is_sorted(stack_a))
-	// 	sort(stack_a);
+	else if (stack_size > 3 && !is_sorted(stack_a))
+	{
+		sort(stack_a, stack_size);
+		if (!is_sorted(stack_a))//inutile si algo de qualite
+			ft_printf("Erreur de tri !\n");
+	}
 }
 
 int	is_sorted(t_stack **stack)
@@ -65,7 +70,7 @@ int	is_sorted(t_stack **stack)
 	return (1);
 }
 
-void	ft_test_init(t_stack **stack)//a balancer apres tests
+void	ft_test_init(t_stack **stack)//a virer apres tests
 {
 	t_stack	*tmp;
 

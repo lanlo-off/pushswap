@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   manip_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:28:42 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/02 11:27:48 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/04 14:38:02 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_stacksize(t_stack **lst)
+{
+	t_stack	*tmp;
+	int		size;
+
+	size = 0;
+	tmp = *lst;
+	while (tmp)
+	{
+		size++;
+		tmp = tmp->next;
+	}
+	return (size);
+}
 
 t_stack	*ft_create_new(long nb)
 {
@@ -63,7 +78,7 @@ int	get_highest_index_pos(t_stack **stack)
 	int	i;
 
 	highest = INT_MIN;
-	i = 1;
+	i = 0;
 	while (*stack)
 	{
 		if ((*stack)->value > highest)

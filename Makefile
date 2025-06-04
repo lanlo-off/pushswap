@@ -1,11 +1,15 @@
-SRCS = src/main.c\
-	src/init_stack.c\
-	src/manip_lst.c\
+SRCS = src/choose_rot.c\
+	src/cost_rot.c\
 	src/ft_free.c\
-	src/swap.c\
-	src/rotate.c\
+	src/init_stack.c\
+	src/main.c\
+	src/manip_lst.c\
 	src/push.c\
 	src/rev_rotate.c\
+	src/rotate.c\
+	src/swap.c\
+	src/sort.c\
+	src/utils.c
 
 OBJS := $(SRCS:.c=.o)
 
@@ -20,13 +24,17 @@ AR = ar rcs
 CFLAGS = -Wall -Wextra -Werror -g
 
 TEST_FILES = test_index.c\
+	src/choose_rot.c\
+	src/cost_rot.c\
+	src/ft_free.c\
 	src/init_stack.c\
 	src/manip_lst.c\
-	src/ft_free.c\
-	src/swap.c\
-	src/rotate.c\
 	src/push.c\
 	src/rev_rotate.c\
+	src/rotate.c\
+	src/swap.c\
+	src/sort.c\
+	src/utils.c
 
 all: $(NAME)
 
