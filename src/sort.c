@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 10:42:02 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 17:43:34 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:35:59 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	sort(t_stack **stack_a, int size_a)
 	stack_b = malloc(sizeof(t_stack *));
 	if (!stack_b)
 		return ;
-	rot_and_sort(stack_a, stack_b);
+	rot_and_sort(stack_a, stack_b, size_a);
 	biggest_first(stack_b);//la on fait tourner b jusaqu'a avoir le plus grand elem de B devant
 	tiny_sort(stack_a);//on trie les 3 valeurs restantes si necessaire
 	pushback(stack_a, stack_b);//on renvoie tout ce qui est dans b dans l'ordre du plus grand au plus petit en faisant attention
@@ -46,7 +46,7 @@ void	sort(t_stack **stack_a, int size_a)
 	free(stack_b);
 }
 
-void	rot_and_sort(t_stack **stack_a, t_stack **stack_b)
+void	rot_and_sort(t_stack **stack_a, t_stack **stack_b, int size_a)
 {
 	int		cheapest;
 	int		i;

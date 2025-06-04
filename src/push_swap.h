@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 17:51:16 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/04 19:09:07 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ void	do_sa(t_stack **stack_a);
 void	do_sb(t_stack **stack_b);
 void	do_ss(t_stack **stack_a, t_stack **stack_b);
 
-/*utils*/
+/*utils.c*/
+int	cost_rb(t_stack **stack_b, int i);
+int	cost_rrb(t_stack **stack_b, int i);
 int	ft_min(int a, int b);
+int	ft_max(int a, int b);
 
 #endif

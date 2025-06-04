@@ -6,9 +6,11 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:26:40 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 17:46:25 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/04 18:19:55 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	choose_rarb(t_stack **stack_a, t_stack **stack_b, int i)
 {
