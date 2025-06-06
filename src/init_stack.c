@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
+/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 19:36:10 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 12:39:33 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int	init_stack(int stack_size, char **av, t_stack **stack)
 	indexation(stack, stack_size);
 	return (1);
 }
+
 /*
-*@param stack et taille
+Index vont de 1 a stack_size
 */
 void	indexation(t_stack **stack, int stack_size)
 {

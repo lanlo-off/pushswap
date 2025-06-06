@@ -45,7 +45,7 @@ int main(void)
     t_stack **stack_a;
     int     size_a;
     t_stack **stack_b;
-    int     size_b;
+    // int     size_b;
 
     // Initialisation
     stack_a = malloc(sizeof(t_stack *));
@@ -66,12 +66,12 @@ int main(void)
     ft_add_new(INT_MAX, stack_a);
     size_a = 5;
 
-    ft_add_new(0, stack_b);
-    ft_add_new(1, stack_b);
-    ft_add_new(2, stack_b);
-    ft_add_new(3, stack_b);
-    ft_add_new(4, stack_b);
-    size_b = 5;
+    // ft_add_new(0, stack_b);
+    // ft_add_new(1, stack_b);
+    // ft_add_new(2, stack_b);
+    // ft_add_new(3, stack_b);
+    // ft_add_new(4, stack_b);
+    // size_b = 0;
 
     // Affichage initial
     printf("\nListe initiale:");
@@ -81,9 +81,9 @@ int main(void)
     // Test de la fonction indexation
     printf("\nTest de l'indexation:");
     indexation(stack_a, size_a);
-    indexation(stack_b, size_b);
+    // indexation(stack_b, size_b);
     print_list(*stack_a, "stack_a");
-    print_list(*stack_b, "stack_b");
+    // print_list(*stack_b, "stack_b");
 
     // Test de swap_a
     printf("\nTest de sa :");

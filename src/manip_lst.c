@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manip_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
+/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:28:42 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 14:38:02 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 13:15:54 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,23 @@ t_stack	*get_last(t_stack *stack)
 
 int	get_highest_index_pos(t_stack **stack)
 {
-	int	highest;
-	int	position;
-	int	i;
+	t_stack	*tmp;
+	int		highest;
+	int		position;
+	int		i;
 
 	highest = INT_MIN;
+	tmp = *stack;
 	i = 0;
-	while (*stack)
+	while (tmp)
 	{
-		if ((*stack)->value > highest)
+		if (tmp->value > highest)
 		{
-			highest = (*stack)->value;
+			highest = tmp->value;
 			position = i;
 		}
 		i++;
+		tmp = tmp->next;
 	}
 	return (position);
 }

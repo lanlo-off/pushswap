@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   cost_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
+/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:50:08 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 19:03:36 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 16:21:28 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int	cost_rb(t_stack **stack_b, int i)
 	t_stack	*tmp;
 
 	cost = 0;
+	if (!*stack_b)
+		return (cost);
 	tmp = *stack_b;
-	if (i > tmp->index && i < get_last(stack_b)->index)
+	if (i > tmp->index && i < get_last(*stack_b)->index)
 		return (cost);
 	cost++;
-	while (!(i > tmp->next->index && i < tmp->index))
+	while (tmp->next && !(i > tmp->next->index && i < tmp->index))
 	{
 		cost++;
 		tmp = tmp->next;
@@ -36,11 +38,13 @@ int	cost_rrb(t_stack **stack_b, int i)
 	t_stack	*tmp;
 
 	cost = 0;
-	tmp = get_last(stack_b);
+	if (!*stack_b)
+		return (cost);
+	tmp = get_last(*stack_b);
 	if (i > (*stack_b)->index && i < tmp->index)
 		return (cost);
 	cost++;
-	while (!(i > tmp->index && i < tmp->prev->index))
+	while (tmp->next && !(i > tmp->index && i < tmp->prev->index))
 	{
 		cost++;
 		tmp = tmp->prev;

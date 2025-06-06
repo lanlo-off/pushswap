@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:25:01 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 19:07:14 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 14:57:22 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rev_rotate(t_stack **stack)
 	t_stack	*last;
 	t_stack	*tmp;
 	
+	if (!*stack)
+		return ;
 	last = get_last(*stack);//on recupere le dernier
 	tmp = last->prev;
 	tmp->next = NULL;//l'avant dernier devient le dernier

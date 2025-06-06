@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost_rot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
+/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:26:23 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 18:49:00 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 14:35:30 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	rot_type(t_stack **stack_a, t_stack **stack_b)
 	cheapest = cost_rarb(stack_a, stack_b, tmp->index);
 	while (tmp)
 	{
+		if (cheapest == 0)
+			return (cheapest);
 		cheapest = ft_min(cheapest, cost_rarb(stack_a, stack_b, tmp->index));
 		cheapest = ft_min(cheapest, cost_rarrb(stack_a, stack_b, tmp->index));
 		cheapest = ft_min(cheapest, cost_rrarb(stack_a, stack_b, tmp->index));
@@ -76,7 +78,7 @@ int	cost_rrarb(t_stack **stack_a, t_stack **stack_b, int i)
 	cost_a = 0;
 	cost_b = 0;
 	if (tmp->index != i)
-		tmp = get_last(stack_a);
+		tmp = get_last(*stack_a);
 	while (tmp->index != i)
 	{
 		cost_a++;
@@ -96,7 +98,7 @@ int	cost_rrarrb(t_stack **stack_a, t_stack **stack_b, int i)
 	cost_a = 0;
 	cost_b = 0;
 	if (tmp->index != i)//on ne part a reculon que si l'elem est pas deja premier
-		tmp = get_last(stack_a);
+		tmp = get_last(*stack_a);
 	while (tmp->index != i)
 	{
 		cost_a++;

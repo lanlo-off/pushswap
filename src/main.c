@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
+/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 13:57:06 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/04 15:01:10 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 16:05:02 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		ft_printf("Error\n");
 		return (1);
 	}
-	ft_test_init(stack_a);//a supprimer avec la fonction en dessous
+	//ft_test_init(stack_a);//a supprimer avec la fonction en dessous
 	ft_pushswap(stack_a, ft_stacksize(stack_a));
 	free_list(stack_a);
 	return (0);
@@ -45,7 +45,7 @@ void	ft_pushswap(t_stack **stack_a, int stack_size)
 		tiny_sort(stack_a);
 	else if (stack_size > 3 && !is_sorted(stack_a))
 	{
-		sort(stack_a, stack_size);
+		sort(stack_a);
 		if (!is_sorted(stack_a))//inutile si algo de qualite
 			ft_printf("Erreur de tri !\n");
 	}
@@ -56,7 +56,7 @@ int	is_sorted(t_stack **stack)
 	t_stack	*tmp;
 	int		previous;
 	
-	if (!*stack)
+	if (!(*stack))
 		return (1);
 	tmp = *stack;
 	previous = tmp->value;

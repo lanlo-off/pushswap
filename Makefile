@@ -1,5 +1,6 @@
 SRCS = src/choose_rot.c\
 	src/cost_rot.c\
+	src/cost_utils.c\
 	src/ft_free.c\
 	src/init_stack.c\
 	src/main.c\
@@ -7,9 +8,8 @@ SRCS = src/choose_rot.c\
 	src/push.c\
 	src/rev_rotate.c\
 	src/rotate.c\
-	src/swap.c\
 	src/sort.c\
-	src/utils.c
+	src/swap.c
 
 OBJS := $(SRCS:.c=.o)
 
@@ -34,12 +34,12 @@ TEST_FILES = test_index.c\
 	src/rotate.c\
 	src/swap.c\
 	src/sort.c\
-	src/utils.c
+	src/cost_utils.c
 
 all: $(NAME)
 
 $(NAME): libs $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -L./ftprintf -lftprintf -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L./libft -lft -L./ftprintf -lftprintf -g -o $(NAME)
 
 %.o: %.c $(HEADER)
 	$(CC) -I./libft -I./ftprintf $(CFLAGS) -c $< -o $@

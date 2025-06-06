@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:20:41 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/01 19:07:22 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/06 14:57:33 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rotate(t_stack **stack)
 	t_stack	*tmp;
 	t_stack	*last;
 	
+	if (!*stack)
+		return ;
 	tmp = *stack;//tmp pointe sur le premier element
 	*stack = (*stack)->next;//decalage de la tete de liste
 	(*stack)->prev = NULL;//tete de liste doinc n'a pas de prev
