@@ -70,33 +70,32 @@ test2:				$(NAME)
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
+					valgrind ./push_swap $(ARG) | ./checker_linux $(ARG)
 
 test3:				$(NAME)	
 					$(eval ARG = $(shell shuf -i 0-100 -n 3))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
+					valgrind ./push_swap $(ARG) | ./checker_linux $(ARG)
 
 test5:				$(NAME)	
 					$(eval ARG = $(shell shuf -i 0-5000 -n 5))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
+					valgrind ./push_swap $(ARG) | ./checker_linux $(ARG)
 
 test100:			$(NAME)	
 					$(eval ARG = $(shell shuf -i 0-5000 -n 100))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
+					valgrind ./push_swap $(ARG) | ./checker_linux $(ARG)
 
 test500:			$(NAME)	
 					$(eval ARG = $(shell shuf -i 0-5000 -n 500))
 					./push_swap $(ARG) | ./checker_linux $(ARG)
 					@echo -n "Instructions: "
 					@./push_swap $(ARG) | wc -l
-
-test1000:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
-					./push_swap $(ARG) | ./checker_linux $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
+					valgrind ./push_swap $(ARG) | ./checker_linux $(ARG)

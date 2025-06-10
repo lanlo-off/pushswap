@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:50:08 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 17:47:11 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:03:03 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	cost_rrb(t_stack **stack_b, int i)
 		return (0);
 	if (i > get_max_index(stack_b) || i < get_min_index(stack_b))
 		return (count_rr_sort(stack_b));
-	while (tmp->next && !(i > tmp->index && i < tmp->prev->index))
+	while (tmp->prev && !(i > tmp->index && i < tmp->prev->index))
 	{
 		cost++;
 		tmp = tmp->prev;
