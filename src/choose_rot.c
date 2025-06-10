@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:26:40 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 12:14:16 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:15:25 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	choose_rarb(t_stack **stack_a, t_stack **stack_b, int i)
 		while ((*stack_a)->index != i
 			&& !(i > (*stack_b)->index && i < get_last(*stack_b)->index))
 			do_rr(stack_a, stack_b);
-		while ((*stack_a)->index != i)//en ecrivant comme ca plutot que par un tmp, on regarde le premier de la liste (qui change apres avoir fait ra donc pas de boucle inf)
+		while ((*stack_a)->index != i)
 			do_ra(stack_a);
 		while (!(i > (*stack_b)->index && i < get_last(*stack_b)->index))
 			do_rb(stack_b);

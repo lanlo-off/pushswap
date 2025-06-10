@@ -1,7 +1,7 @@
 SRCS = src/choose_rot.c\
 	src/cost_rot.c\
 	src/cost_utils.c\
-	src/ft_free.c\
+	src/free_and_error.c\
 	src/init_stack.c\
 	src/main.c\
 	src/manip_lst.c\
@@ -27,7 +27,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 TEST_FILES = test_index.c\
 	src/choose_rot.c\
 	src/cost_rot.c\
-	src/ft_free.c\
+	src/free_and_error.c\
 	src/init_stack.c\
 	src/manip_lst.c\
 	src/manip_lst2.c\

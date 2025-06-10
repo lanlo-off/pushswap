@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manip_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:28:42 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 13:15:54 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 15:22:08 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_stack	*ft_create_new(long nb)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);//free dans le main ==> A checker
-	new->value = nb;
+	new->value = (int)nb;
 	new->index = 0;
 	new->next = NULL;
 	new->prev = NULL;

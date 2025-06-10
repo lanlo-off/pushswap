@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 17:16:50 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 13:02:03 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 14:42:20 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	free_tab(char **tab)
 		free(tab[i]);
 		i++;
 	}
-	free(tab[i]);
 	free(tab);
 }
 

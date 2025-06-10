@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 10:42:02 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 12:18:51 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:16:15 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	sort(t_stack **stack_a)
 	stack_b = malloc(sizeof(t_stack *));
 	if (!stack_b)
 		return ;
+	*stack_b = NULL;
 	if (ft_stacksize(stack_a) > 3 && !is_sorted(stack_a))
 		do_pb(stack_a, stack_b);
 	if (ft_stacksize(stack_a) > 3 && !is_sorted(stack_a))
 		do_pb(stack_a, stack_b);
 	rot_and_sort(stack_a, stack_b);
-	tiny_sort(stack_a);//on trie les 3 valeurs restantes si necessaire
-	pushback(stack_a, stack_b);//on renvoie tout ce qui est dans b dans l'ordre du plus grand au plus petit en faisant attention
-	//car le plus grand de la stack a peut-etre plus grand ou plus petit que le plus grand de la stack b.
+	tiny_sort(stack_a);
+	pushback(stack_a, stack_b);
 	free(stack_b);
 }
 

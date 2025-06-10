@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 12:39:33 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 16:38:44 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	init_stack_string(char **tab, t_stack **stack, int nb_arg)
+{
+	int		i;
+	long	nb;
+
+	i = 0;
+	while (i < nb_arg)
+	{
+		nb = ft_atol(tab[i]);//atol strict qui ne fonctionne pas s'il y a d'autres caracteres apres le nombre
+		if (nb < INT_MIN || nb > INT_MAX || !check_duplicates(stack, nb))
+			return (0);//le free se fait depuis le main
+		if (!ft_add_new(nb, stack))
+			return (0);//si pb dans add new, free depuis main
+		i++;
+	}
+	if (!(*stack))//cas particulier pour gerer 1 arg = "   "
+		return (0);	
+	indexation(stack, ft_stacksize(stack));
+	return (1);
+}
 
 int	init_stack(int stack_size, char **av, t_stack **stack)
 {
@@ -63,6 +84,7 @@ void	indexation(t_stack **stack, int stack_size)
 
 int	check_duplicates(t_stack **stack_a, long nb)
 {
+
 	t_stack	*tmp;
 
 	if (!stack_a)
@@ -70,7 +92,7 @@ int	check_duplicates(t_stack **stack_a, long nb)
 	tmp = *stack_a;
 	while (tmp)
 	{
-		if (tmp->value == nb)
+		if (tmp->value == (int)nb)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -81,7 +103,6 @@ long	ft_atol(char *str)
 {
 	long	nb;
 	int		i;
-	int		j;
 	int		sign;
 
 	i = 0;
@@ -89,17 +110,22 @@ long	ft_atol(char *str)
 	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
+	if (!str[i])//Si on arrive à la fin après les espaces
+        return ((long)INT_MAX + 1);
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	j = i;
+	if (!str[i] || !(str[i] >= '0' && str[i] <= '9'))  // Vérifie si un chiffre suit le signe
+        return ((long)INT_MAX + 1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + str[i] - 48;
 		i++;
 	}
-	if (j == i || str[i])//si aucun chiffre trouve ou si autre caractere derriere
+	while (str[i] == ' ')  // Autorise les espaces après le nombre
+		i++;
+	if (str[i])//si aucun chiffre trouve ou si autre caractere derriere autre qu'un espace
 		return ((long)INT_MAX + 1);//arg invalide car pas un nombre ==> fera sortir de la boucle dans valid arg
 	return (nb * sign);
 }

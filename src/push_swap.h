@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 12:10:04 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 16:32:14 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,14 @@ int		cost_rrb(t_stack **stack_b, int i);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 
-/*ft_free.c*/
+/*free_and_error.c*/
 void	free_list(t_stack **stack);
+void	free_tab(char **tab);
+void	error_exit(t_stack **stack);
 
 /* init_stack.c */
 void	indexation(t_stack **stack, int stack_size);
+int		init_stack_string(char **tab, t_stack **stack, int nb_arg);
 int		init_stack(int stack_size, char **av, t_stack **stack);
 int		check_duplicates(t_stack **stack_a, long nb);
 long	ft_atol(char *str);
@@ -59,6 +62,9 @@ void	ft_test_init(t_stack **stack);
 int		is_sorted(t_stack **stack);
 int		is_rev_sorted(t_stack **stack);
 void	ft_pushswap(t_stack **stack_a, int stack_size);
+int		split_arg(char *av, t_stack **stack_a);
+void print_debug(t_stack *stack, char *name);//a supprimer ensuite
+int	count_arg(char **tab);
 
 /*manip_lst.c*/
 int		ft_stacksize(t_stack **lst);
