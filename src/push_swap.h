@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 16:32:14 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:25:00 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		cost_rb(t_stack **stack_b, int i);
 int		cost_rrb(t_stack **stack_b, int i);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
+int		count_arg(char **tab);
 
 /*free_and_error.c*/
 void	free_list(t_stack **stack);
@@ -58,13 +59,10 @@ int		check_duplicates(t_stack **stack_a, long nb);
 long	ft_atol(char *str);
 
 /*main.c*/
-void	ft_test_init(t_stack **stack);
 int		is_sorted(t_stack **stack);
 int		is_rev_sorted(t_stack **stack);
 void	ft_pushswap(t_stack **stack_a, int stack_size);
 int		split_arg(char *av, t_stack **stack_a);
-void print_debug(t_stack *stack, char *name);//a supprimer ensuite
-int	count_arg(char **tab);
 
 /*manip_lst.c*/
 int		ft_stacksize(t_stack **lst);

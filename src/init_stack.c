@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 16:38:44 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:19:49 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,11 @@ long	ft_atol(char *str)
 	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (!str[i])//Si on arrive à la fin après les espaces
-        return ((long)INT_MAX + 1);
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (!str[i] || !(str[i] >= '0' && str[i] <= '9'))  // Vérifie si un chiffre suit le signe
+	if (!str[i] || !(str[i] >= '0' && str[i] <= '9'))// Vérifie si un chiffre suit le signe (espaces interdits)
         return ((long)INT_MAX + 1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{

@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:50:08 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 11:59:06 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 17:47:11 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,14 @@ int	ft_max(int a, int b)
 	if (a >= b)
 		return (a);
 	return (b);
+}
+
+int	count_arg(char **tab)
+{
+	int	count;
+
+	count = 0;
+	while (tab[count])
+		count++;
+	return (count);
 }
