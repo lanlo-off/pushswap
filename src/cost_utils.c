@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:50:08 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 16:21:28 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 11:59:06 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ int	cost_rb(t_stack **stack_b, int i)
 	int		cost;
 	t_stack	*tmp;
 
-	cost = 0;
+	cost = 1;
 	if (!*stack_b)
-		return (cost);
+		return (0);
 	tmp = *stack_b;
 	if (i > tmp->index && i < get_last(*stack_b)->index)
-		return (cost);
-	cost++;
+		return (0);
+	if (i > get_max_index(stack_b) || i < get_min_index(stack_b))
+		return (count_r_sort(stack_b));
 	while (tmp->next && !(i > tmp->next->index && i < tmp->index))
 	{
 		cost++;
@@ -37,13 +38,14 @@ int	cost_rrb(t_stack **stack_b, int i)
 	int		cost;
 	t_stack	*tmp;
 
-	cost = 0;
+	cost = 1;
 	if (!*stack_b)
-		return (cost);
+		return (0);
 	tmp = get_last(*stack_b);
 	if (i > (*stack_b)->index && i < tmp->index)
-		return (cost);
-	cost++;
+		return (0);
+	if (i > get_max_index(stack_b) || i < get_min_index(stack_b))
+		return (count_rr_sort(stack_b));
 	while (tmp->next && !(i > tmp->index && i < tmp->prev->index))
 	{
 		cost++;

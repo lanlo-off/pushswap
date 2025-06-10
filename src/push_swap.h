@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 12:46:54 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:10:04 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ long	ft_atol(char *str);
 /*main.c*/
 void	ft_test_init(t_stack **stack);
 int		is_sorted(t_stack **stack);
+int		is_rev_sorted(t_stack **stack);
 void	ft_pushswap(t_stack **stack_a, int stack_size);
 
 /*manip_lst.c*/
@@ -65,6 +66,12 @@ t_stack	*ft_create_new(long nb);
 int		ft_add_new(long nb, t_stack **stack_a);
 t_stack	*get_last(t_stack *stack);
 int		get_highest_index_pos(t_stack **stack);
+
+/*manip_lst2.c*/
+int		get_min_index(t_stack **stack);
+int		get_max_index(t_stack **stack);
+int		count_r_sort(t_stack **stack);
+int		count_rr_sort(t_stack **stack);
 
 /*push.c*/
 void	push(t_stack **stack_from, t_stack **stack_to);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 10:42:02 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 16:03:58 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 12:18:51 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,30 +94,43 @@ void	pushback(t_stack **stack_a, t_stack **stack_b)
 		else
 			do_rra(stack_a);
 	}
-	while ((*stack_a)->index != 1)
+	if (get_highest_index_pos(stack_a) > ft_stacksize(stack_a) / 2)//verifier le sens de rotation et verifier
+	{
+		while ((*stack_a)->index != 1)
 		do_rra(stack_a);
+	}
+	else
+	{
+		while ((*stack_a)->index != 1)
+		do_ra(stack_a);
+	}
 }
 
 /*on positionne le plus grand index au top selon s'il est au debut ou a la fin de la stack_b*/
 void	easy_rev_sort(t_stack **stack)
 {
 	int	highest_index_pos;
+	int	stack_size;
+	int	nb_rot;
 
+	stack_size = ft_stacksize(stack);
 	highest_index_pos = get_highest_index_pos(stack);//si a la fin de la stack -> rrb
-	if (highest_index_pos > ft_stacksize(stack) / 2)
+	if (highest_index_pos > stack_size / 2)
 	{
-		while (highest_index_pos)
+		nb_rot = stack_size - highest_index_pos;
+		while (nb_rot)
 		{
 			do_rrb(stack);
-			highest_index_pos--;
+			nb_rot--;
 		}
 	}
 	else//si dans la premiere partie, on fait du rb plutot que rrb
 	{
-		while (highest_index_pos)
+		nb_rot = highest_index_pos;
+		while (nb_rot)
 		{
 			do_rb(stack);
-			highest_index_pos--;
+			nb_rot--;
 		}
 	}
 }
