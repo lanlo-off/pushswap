@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 11:28:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 11:53:34 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:35:19 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	count_r_sort(t_stack **stack)
 {
 	int		cost;
 	t_stack	*tmp;
-	
+
 	cost = 0;
 	tmp = *stack;
 	while (tmp && tmp->index != get_max_index(stack))
@@ -63,7 +63,7 @@ int	count_rr_sort(t_stack **stack)
 {
 	int		cost;
 	t_stack	*tmp;
-	
+
 	cost = 0;
 	tmp = get_last(*stack);
 	while (tmp && tmp->index != get_max_index(stack))

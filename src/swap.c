@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 17:49:23 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 11:10:14 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:39:59 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)//on manipule pas **stack car on ne change pas la tete de la pile mais on intervertit les valeurs (different de rotate)
+/*on manipule pas **stack car on ne change pas la tete de la pile 
+mais on intervertit les valeurs (different de rotate)*/
+void	swap(t_stack *stack)
 {
 	int	tmp;
-	
+
 	if (stack == NULL || stack->next == NULL)
 		return ;
-	tmp = stack->value;//on stocke la valeur de l'ancien premier elem
-	stack->value = stack->next->value;//l'ancien premier element prend la valeur du 2eme element
-	stack->next->value = tmp;//et l'ancien deuxieme prend la valeur de l'ancien premier
-	tmp = stack->index;//on stocke l'index de l'ancien premier elem
-	stack->index = stack->next->index;//l'ancien premier element prend l'index du 2eme element
-	stack->next->index = tmp;//et l'ancien deuxieme prend la valeur de l'ancien premier
+	tmp = stack->value;
+	stack->value = stack->next->value;
+	stack->next->value = tmp;
+	tmp = stack->index;
+	stack->index = stack->next->index;
+	stack->next->index = tmp;
 }
 
 void	do_sa(t_stack **stack_a)

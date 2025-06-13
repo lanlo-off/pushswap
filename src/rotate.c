@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llechert <llechert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:20:41 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/06 14:57:33 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:37:05 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*last;
-	
+
 	if (!*stack)
 		return ;
-	tmp = *stack;//tmp pointe sur le premier element
-	*stack = (*stack)->next;//decalage de la tete de liste
-	(*stack)->prev = NULL;//tete de liste doinc n'a pas de prev
-	last = get_last(*stack);//on va chercher le dernier elem
-	tmp->next = NULL;//on place le premier elem en dernier
+	tmp = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last = get_last(*stack);
+	tmp->next = NULL;
 	tmp->prev = last;
-	last->next = tmp;//on fait le raccordement dans les 2 sens (prev et next)
+	last->next = tmp;
 }
 
 void	do_ra(t_stack **stack_a)

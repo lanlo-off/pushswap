@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:27:46 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 17:25:00 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 20:49:29 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,6 @@ int		init_stack(int stack_size, char **av, t_stack **stack);
 int		check_duplicates(t_stack **stack_a, long nb);
 long	ft_atol(char *str);
 
-/*main.c*/
-int		is_sorted(t_stack **stack);
-int		is_rev_sorted(t_stack **stack);
-void	ft_pushswap(t_stack **stack_a, int stack_size);
-int		split_arg(char *av, t_stack **stack_a);
-
 /*manip_lst.c*/
 int		ft_stacksize(t_stack **lst);
 t_stack	*ft_create_new(long nb);
@@ -81,6 +75,12 @@ int		count_rr_sort(t_stack **stack);
 void	push(t_stack **stack_from, t_stack **stack_to);
 void	do_pa(t_stack **stack_a, t_stack **stack_b);
 void	do_pb(t_stack **stack_a, t_stack **stack_b);
+
+/*pushswap.c*/
+int		is_sorted(t_stack **stack);
+int		is_rev_sorted(t_stack **stack);
+void	ft_pushswap(t_stack **stack_a, int stack_size);
+int		split_arg(char *av, t_stack **stack_a);
 
 /*rev_rotate.c*/
 void	rev_rotate(t_stack **stack);

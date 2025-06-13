@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:19:35 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 17:19:49 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:32:27 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	init_stack_string(char **tab, t_stack **stack, int nb_arg)
 	i = 0;
 	while (i < nb_arg)
 	{
-		nb = ft_atol(tab[i]);//atol strict qui ne fonctionne pas s'il y a d'autres caracteres apres le nombre
+		nb = ft_atol(tab[i]);
 		if (nb < INT_MIN || nb > INT_MAX || !check_duplicates(stack, nb))
-			return (0);//le free se fait depuis le main
+			return (0);
 		if (!ft_add_new(nb, stack))
-			return (0);//si pb dans add new, free depuis main
+			return (0);
 		i++;
 	}
-	if (!(*stack))//cas particulier pour gerer 1 arg = "   "
-		return (0);	
+	if (!(*stack))
+		return (0);
 	indexation(stack, ft_stacksize(stack));
 	return (1);
 }
@@ -41,11 +41,11 @@ int	init_stack(int stack_size, char **av, t_stack **stack)
 	i = 0;
 	while (i < stack_size)
 	{
-		nb = ft_atol(av[i + 1]);//atol strict qui ne fonctionne pas s'il y a d'autres caracteres apres le nombre
+		nb = ft_atol(av[i + 1]);
 		if (nb < INT_MIN || nb > INT_MAX || !check_duplicates(stack, nb))
-			return (0);//le free se fait depuis le main
+			return (0);
 		if (!ft_add_new(nb, stack))
-			return (0);//si pb dans add new, free depuis main
+			return (0);
 		i++;
 	}
 	indexation(stack, stack_size);
@@ -60,31 +60,30 @@ void	indexation(t_stack **stack, int stack_size)
 	t_stack	*tmp;
 	t_stack	*highest;
 	int		value;
-	
-	while (--stack_size >= 0)//l'indexation se passe du plus grand au plus petit donc on repete stack_size fois l'operation
+
+	while (--stack_size >= 0)
 	{
 		tmp = *stack;
 		value = INT_MIN;
 		highest = NULL;
 		while (tmp)
 		{
-			if (tmp->value == INT_MIN && tmp->index == 0)//si on rencontre INT MIN et qu'on l'a pas encore indexe on le met forcement a l'index 1 (necessaire car value est initialise a INT_MIN)
+			if (tmp->value == INT_MIN && tmp->index == 0)
 				tmp->index = 1;
-			if (tmp->value > value && tmp->index == 0)//c'est ici qu'on exclut les elems deja indexes
+			if (tmp->value > value && tmp->index == 0)
 			{
 				value = tmp->value;
-				highest = tmp;//on marque cet element comme etant le plus grand elem non indexe rencontre jusqu'a maintenant
+				highest = tmp;
 			}
-			tmp = tmp->next;//On avance d'un element si l'element precedent n'a pas une valeur > que celle en memoire ou s'il est deja indexe !
+			tmp = tmp->next;
 		}
-		if (highest != NULL)//lorsqu'on a parcouru toute la liste on connait le plus grand chiffre
-			highest->index = stack_size + 1;//on lui assigne donc l'index max de ce moment et on recommence pour l'index inferieur
+		if (highest != NULL)
+			highest->index = stack_size + 1;
 	}
 }
 
 int	check_duplicates(t_stack **stack_a, long nb)
 {
-
 	t_stack	*tmp;
 
 	if (!stack_a)
@@ -114,16 +113,16 @@ long	ft_atol(char *str)
 		sign = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (!str[i] || !(str[i] >= '0' && str[i] <= '9'))// Vérifie si un chiffre suit le signe (espaces interdits)
-        return ((long)INT_MAX + 1);
+	if (!str[i] || !(str[i] >= '0' && str[i] <= '9'))
+		return ((long)INT_MAX + 1);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + str[i] - 48;
 		i++;
 	}
-	while (str[i] == ' ')  // Autorise les espaces après le nombre
+	while (str[i] == ' ')
 		i++;
-	if (str[i])//si aucun chiffre trouve ou si autre caractere derriere autre qu'un espace
-		return ((long)INT_MAX + 1);//arg invalide car pas un nombre ==> fera sortir de la boucle dans valid arg
+	if (str[i])
+		return ((long)INT_MAX + 1);
 	return (nb * sign);
 }

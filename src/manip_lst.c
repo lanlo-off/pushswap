@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 18:28:42 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 15:22:08 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:35:04 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_stack	*ft_create_new(long nb)
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		return (NULL);//free dans le main ==> A checker
+		return (NULL);
 	new->value = (int)nb;
 	new->index = 0;
 	new->next = NULL;
@@ -48,7 +48,7 @@ int	ft_add_new(long nb, t_stack **stack_a)
 
 	new = ft_create_new(nb);
 	if (!new)
-		return (0);//free dans le main
+		return (0);
 	if (!*stack_a)
 	{
 		*stack_a = new;
@@ -57,8 +57,8 @@ int	ft_add_new(long nb, t_stack **stack_a)
 	tmp = *stack_a;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = new;//une fois sur le dernier maillon deja existant, on peut ajouter le new en next
-	new->prev = tmp;//en miroir, l'ancien dernier est le prev du new
+	tmp->next = new;
+	new->prev = tmp;
 	return (1);
 }
 

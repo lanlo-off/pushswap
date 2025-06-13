@@ -6,7 +6,7 @@
 /*   By: llechert <llechert@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 17:16:50 by llechert          #+#    #+#             */
-/*   Updated: 2025/06/10 14:42:20 by llechert         ###   ########.fr       */
+/*   Updated: 2025/06/10 19:29:15 by llechert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ void	free_tab(char **tab)
 void	error_exit(t_stack **stack)
 {
 	free_list(stack);
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 }
